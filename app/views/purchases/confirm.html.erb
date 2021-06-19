@@ -1,0 +1,53 @@
+<%= form_with(model: @purchase, local: true)  do |f| %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            
+            <h5>お届け先</h5>
+            <div class="offset-sm-1">
+                <p>お名前：<%= current_user.name %></br>
+                住所　：〒<%= current_user.postalcode %></br>
+                <%= current_user.prefecture %><%= current_user.address1 %><%= current_user.address2 %></p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h5>お支払方法</h5>
+            <div class="offset-sm-1">
+                <div class="form-group">
+                    <p><%= f.select  :payment_method,  [["代引き", "代引き"], ["クレジットカード", "クレジットカード"]]  %></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <%= f.submit '購入する', class: 'btn btn-danger btn-block' %>
+            <%# 個数の掛け算 %>
+            <br><p class = "text-right"><strong>合計：<%= @product.price * @purchase.quantity %>円</strong></p>
+        </div>
+        <div class="col-md-12">
+        <h5>ご注文商品</h5>
+        </div>
+        <div class="col-md-6">
+                <%= image_tag @product.image, class: "img-fluid" %>
+        </div>
+        <div class="col-md-6">
+            <table class="table border="2"">
+                <thead>
+                    <tr><td colspan="2"><%= @product.name %></td></tr>
+                    <tr><td colspan="2"><%= @product.description %></td></tr>
+                    <tr><td>値段</td>
+                        <td><div class="text-right"><%= @product.price %>円</div></td>
+                    </tr>
+                    <tr>
+                        <td>個数</td>
+                        <td><div class="text-right"><%= @purchase.quantity %>個</div></td>
+                    </tr>
+                    <tr>
+                        <td>合計</td>
+                        <td><div class="text-right"><%= @product.price * @purchase.quantity %>円</div></td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+<% end %>

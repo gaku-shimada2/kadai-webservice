@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <%= image_tag @product.image, class: "img-fluid" %>
+        </div>
+        <div class="col-md-7">
+            <p><%= @product.name %><br>
+            <%= @product.description %><br></p>
+            <p class= "text-right"><%= @product.price %>円</p>
+            
+            <%= form_with(model: @purchase, local: true, method: "GET", url: confirm_path)  do |f| %>
+            <%= render 'layouts/error_messages', model: f.object %>
+            <div class="form-group">
+                <p class="text-right"><%= f.select  :quantity,  [["1", 1], ["2", 2], ["3", 3], ["4", 4]], include_blank: "個数を選択"  %>　個</p>
+            </div>
+            <%= f.submit '購入手続き', class: 'btn btn-danger btn-block' %>
+            <% end %>
+            <% if logged_in? %>
+                <p><%= render 'likes/like_button', product: @product %></p>
+            <% end %>
+        </div>
+    </div>
+</div>

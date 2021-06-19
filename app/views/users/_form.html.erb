@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+    <%= form_with(model: user, local: true) do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
+      
+    <div class="form-group">
+      <%= f.label :name, 'お名前' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.email_field :email, class: 'form-control' %>
+    </div>
+      
+    <h5>お届け先</h5>
+    <div class="form-group">
+      <%= f.label :postalcode, '郵便番号' %>
+      <%= f.text_field :postalcode, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :prefecture, '都道府県' %>
+      <%= f.text_field :prefecture, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address1, '市区町村・番地' %>
+      <%= f.text_field :address1, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address2, 'マンション名・部屋番号（任意）' %>
+      <%= f.text_field :address2, class: 'form-control' %>
+    </div>
+      
+    <div class="form-group">
+      <%= f.label :tel, '電話番号' %>
+      <%= f.telephone_field :tel, class: 'form-control' %>
+    </div>      
+      
+    <% if logged_in? %>
+       <div class="text-right">
+         <%= f.submit '更新する', class: 'btn btn-primary btn-lg' %>
+       </div>
+       
+    <% else %>
+      <div class="form-group">
+        <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password, class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation, 'パスワード（確認用）' %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+      </div>
+      
+      <div class="text-right">
+        <%= f.submit '登録する', class: 'btn btn-primary btn-lg' %>
+      </div>
+    <% end %>
+  </div>      
+<% end %>
+
