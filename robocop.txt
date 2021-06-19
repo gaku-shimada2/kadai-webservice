@@ -1,0 +1,384 @@
+Inspecting 20 files
+CCCCCCCCCCCCCCCCCCCC
+
+Offenses:
+
+Rakefile:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# Add your own tasks in files placed in lib/tasks ending in .rake,
+^
+app/channels/application_cable/channel.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module ApplicationCable
+^
+app/channels/application_cable/connection.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module ApplicationCable
+^
+app/controllers/application_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class ApplicationController < ActionController::Base
+^^^^^
+app/controllers/application_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ApplicationController < ActionController::Base
+^
+app/controllers/application_controller.rb:2:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/application_controller.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    include SessionsHelper
+^^^^
+app/controllers/application_controller.rb:5:5: C: [Correctable] Layout/AccessModifierIndentation: Indent access modifiers like private.
+    private
+    ^^^^^^^
+app/controllers/application_controller.rb:6:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/application_controller.rb:7:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def require_user_logged_in
+^^^^
+app/controllers/application_controller.rb:8:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        unless logged_in?
+    ^^^^
+app/controllers/application_controller.rb:8:9: C: Style/GuardClause: Use a guard clause (return if logged_in?) instead of wrapping the code inside a conditional expression.
+        unless logged_in?
+        ^^^^^^
+app/controllers/application_controller.rb:9:40: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+          flash[:danger] = 'ログインが必要です。'  
+                                                 ^^
+app/controllers/likes_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class LikesController < ApplicationController
+^^^^^
+app/controllers/likes_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class LikesController < ApplicationController
+^
+app/controllers/likes_controller.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation.
+   before_action :require_user_logged_in
+^^^
+app/controllers/likes_controller.rb:3:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def create ...
+  ^^^^^^^^^^
+app/controllers/likes_controller.rb:10:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def destroy ...
+  ^^^^^^^^^^^
+app/controllers/products_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class ProductsController < ApplicationController
+^^^^^
+app/controllers/products_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ProductsController < ApplicationController
+^
+app/controllers/products_controller.rb:5:34: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    session[:purchase_product_id]  = @product.id
+                                 ^
+app/controllers/products_controller.rb:5:36: C: [Correctable] Layout/SpaceAroundOperators: Operator = should be surrounded by a single space.
+    session[:purchase_product_id]  = @product.id
+                                   ^
+app/controllers/purchases_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class PurchasesController < ApplicationController
+^^^^^
+app/controllers/purchases_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class PurchasesController < ApplicationController
+^
+app/controllers/purchases_controller.rb:3:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/purchases_controller.rb:6:58: C: [Correctable] Layout/SpaceInsideParens: Space inside parentheses detected.
+    @product = Product.find(session[:purchase_product_id] )
+                                                         ^
+app/controllers/purchases_controller.rb:7:27: C: [Correctable] Style/NilComparison: Prefer the use of the nil? predicate.
+    if @purchase.quantity == nil then
+                          ^^
+app/controllers/purchases_controller.rb:7:34: C: [Correctable] Style/MultilineIfThen: Do not use then for multi-line if.
+    if @purchase.quantity == nil then
+                                 ^^^^
+app/controllers/purchases_controller.rb:9:20: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      render file: "app/views/products/show.html.erb"
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/purchases_controller.rb:11:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+    session[:purchase_quantity]  = @purchase.quantity
+    
+app/controllers/purchases_controller.rb:11:32: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    session[:purchase_quantity]  = @purchase.quantity
+                               ^
+app/controllers/purchases_controller.rb:11:34: C: [Correctable] Layout/SpaceAroundOperators: Operator = should be surrounded by a single space.
+    session[:purchase_quantity]  = @purchase.quantity
+                                 ^
+app/controllers/purchases_controller.rb:15:3: C: Metrics/AbcSize: Assignment Branch Condition size for create is too high. [<4, 22, 2> 22.45/17]
+  def create ...
+  ^^^^^^^^^^
+app/controllers/purchases_controller.rb:16:121: C: [Correctable] Layout/LineLength: Line is too long. [176/120]
+    @purchase = current_user.purchases.build(product_id: session[:purchase_product_id], quantity: session[:purchase_quantity], payment_method: purchase_params[:payment_method])
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/purchases_controller.rb:20:7: C: [Correctable] Style/IdenticalConditionalBranches: Move redirect_to complete_path out of the conditional.
+      redirect_to complete_path
+      ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/purchases_controller.rb:23:7: C: [Correctable] Style/IdenticalConditionalBranches: Move redirect_to complete_path out of the conditional.
+      redirect_to complete_path
+      ^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/purchases_controller.rb:26:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/purchases_controller.rb:28:58: C: [Correctable] Layout/SpaceInsideParens: Space inside parentheses detected.
+    @product = Product.find(session[:purchase_product_id] )
+                                                         ^
+app/controllers/purchases_controller.rb:30:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/purchases_controller.rb:31:3: C: [Correctable] Layout/EmptyLinesAroundAccessModifier: Keep a blank line before and after private.
+  private
+  ^^^^^^^
+app/controllers/purchases_controller.rb:35:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/sessions_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class SessionsController < ApplicationController
+^^^^^
+app/controllers/sessions_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class SessionsController < ApplicationController
+^
+app/controllers/sessions_controller.rb:2:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def new ...
+  ^^^^^^^
+app/controllers/sessions_controller.rb:22:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/sessions_controller.rb:23:2: C: [Correctable] Layout/AccessModifierIndentation: Indent access modifiers like private.
+ private
+ ^^^^^^^
+app/controllers/sessions_controller.rb:27:5: C: Style/GuardClause: Use a guard clause (return false unless @user && @user.authenticate(password)) instead of wrapping the code inside a conditional expression.
+    if @user && @user.authenticate(password)
+    ^^
+app/controllers/sessions_controller.rb:27:8: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+    if @user && @user.authenticate(password)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:28:9: C: Style/AsciiComments: Use only ascii symbols in comments.
+      # ログイン成功
+        ^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:30:7: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+      return true
+      ^^^^^^
+app/controllers/sessions_controller.rb:32:9: C: Style/AsciiComments: Use only ascii symbols in comments.
+      # ログイン失敗
+        ^^^^^^^^^^^^
+app/controllers/sessions_controller.rb:33:7: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+      return false
+      ^^^^^^
+app/controllers/sessions_controller.rb:36:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/toppages_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class ToppagesController < ApplicationController
+^^^^^
+app/controllers/toppages_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ToppagesController < ApplicationController
+^
+app/controllers/users_controller.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class UsersController < ApplicationController
+^^^^^
+app/controllers/users_controller.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class UsersController < ApplicationController
+^
+app/controllers/users_controller.rb:2:34: C: [Correctable] Style/SymbolArray: Use %i or %I for an array of symbols.
+  before_action :set_user, only: [:show, :edit, :update]
+                                 ^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:3:48: C: [Correctable] Style/SymbolArray: Use %i or %I for an array of symbols.
+  before_action :require_user_logged_in, only: [:edit, :update, :purchases, :likes]
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:4:44: C: [Correctable] Style/SymbolArray: Use %i or %I for an array of symbols.
+  before_action :require_user_check, only: [:edit, :update, :purchases, :likes]
+                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:7:5: C: [Correctable] Style/UnlessElse: Do not use unless with else. Rewrite these with the positive case first.
+    unless logged_in? ...
+    ^^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:8:43: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+      unless session[:create_user_id].to_s  == params[:id]
+                                          ^
+app/controllers/users_controller.rb:8:45: C: [Correctable] Layout/SpaceAroundOperators: Operator == should be surrounded by a single space.
+      unless session[:create_user_id].to_s  == params[:id]
+                                            ^^
+app/controllers/users_controller.rb:9:34: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+        flash[:danger] = 'aaaaa。'  
+                                  ^^
+app/controllers/users_controller.rb:12:7: C: [Correctable] Layout/ElseAlignment: Align else with unless.
+      else
+      ^^^^
+app/controllers/users_controller.rb:27:31: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+      session[:create_user_id]  = @user.id
+                              ^
+app/controllers/users_controller.rb:27:33: C: [Correctable] Layout/SpaceAroundOperators: Operator = should be surrounded by a single space.
+      session[:create_user_id]  = @user.id
+                                ^
+app/controllers/users_controller.rb:34:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:35:3: C: [Correctable] Style/EmptyMethod: Put empty method definitions on a single line.
+  def edit ...
+  ^^^^^^^^
+app/controllers/users_controller.rb:37:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:47:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:51:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:55:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:58:6: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+  end  
+     ^^
+app/controllers/users_controller.rb:59:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:63:121: C: [Correctable] Layout/LineLength: Line is too long. [136/120]
+    params.require(:user).permit(:name, :email, :postalcode, :prefecture, :address1, :address2, :tel, :password, :password_confirmation)
+                                                                                                                        ^^^^^^^^^^^^^^^^
+app/controllers/users_controller.rb:65:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:69:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/controllers/users_controller.rb:71:5: C: Style/GuardClause: Use a guard clause (return if current_user.id.to_s == params[:id]) instead of wrapping the code inside a conditional expression.
+    unless current_user.id.to_s == params[:id]
+    ^^^^^^
+app/controllers/users_controller.rb:72:37: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      flash[:danger] = '再ログインが必要です。'  
+                                               ^^
+app/controllers/users_controller.rb:76:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+app/controllers/users_controller.rb:78:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+app/helpers/application_helper.rb:1:1: C: Style/Documentation: Missing top-level module documentation comment.
+module ApplicationHelper
+^^^^^^
+app/helpers/application_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module ApplicationHelper
+^
+app/helpers/sessions_helper.rb:1:1: C: Style/Documentation: Missing top-level module documentation comment.
+module SessionsHelper
+^^^^^^
+app/helpers/sessions_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+module SessionsHelper
+^
+app/jobs/application_job.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ApplicationJob < ActiveJob::Base
+^
+app/mailers/application_mailer.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ApplicationMailer < ActionMailer::Base
+^
+app/models/application_record.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class ApplicationRecord < ActiveRecord::Base
+^^^^^
+app/models/application_record.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class ApplicationRecord < ActiveRecord::Base
+^
+app/models/like.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Like < ApplicationRecord
+^
+app/models/product.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Product < ApplicationRecord
+^
+app/models/product.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :purchases
+^^^^
+app/models/product.rb:2:5: C: Rails/HasManyOrHasOneDependent: Specify a :dependent option.
+    has_many :purchases
+    ^^^^^^^^
+app/models/product.rb:3:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/product.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :likes
+^^^^
+app/models/product.rb:4:5: C: Rails/HasManyOrHasOneDependent: Specify a :dependent option.
+    has_many :likes
+    ^^^^^^^^
+app/models/purchase.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Purchase < ApplicationRecord
+^
+app/models/user.rb:1:1: C: Style/Documentation: Missing top-level class documentation comment.
+class User < ApplicationRecord
+^^^^^
+app/models/user.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class User < ApplicationRecord
+^
+app/models/user.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    before_save { self.email.downcase! }
+^^^^
+app/models/user.rb:2:19: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+    before_save { self.email.downcase! }
+                  ^^^^
+app/models/user.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :name, presence: true, length: { maximum: 50 }
+^^^^
+app/models/user.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :email, presence: true, length: { maximum: 255 },
+^^^^
+app/models/user.rb:4:5: C: Rails/UniqueValidationWithoutIndex: Uniqueness validation should be with a unique index.
+    validates :email, presence: true, length: { maximum: 255 }, ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:5:19: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+                  format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:6:19: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+                  uniqueness: { case_sensitive: false }
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:7:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :postalcode, presence: true,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+^^^^
+app/models/user.rb:7:53: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    validates :postalcode, presence: true,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+                                                    ^
+app/models/user.rb:7:83: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    validates :postalcode, presence: true,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+                                                                                  ^
+app/models/user.rb:8:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :prefecture, presence: true,  length: { maximum: 10 }
+^^^^
+app/models/user.rb:9:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :address1, presence: true,  length: { maximum: 100 }
+^^^^
+app/models/user.rb:9:41: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    validates :address1, presence: true,  length: { maximum: 100 }
+                                        ^
+app/models/user.rb:10:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :address2, length: { maximum: 100 }
+^^^^
+app/models/user.rb:11:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    validates :tel,  presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
+^^^^
+app/models/user.rb:11:20: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+    validates :tel,  presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
+                   ^
+app/models/user.rb:11:52: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    validates :tel,  presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
+                                                   ^
+app/models/user.rb:11:71: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    validates :tel,  presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
+                                                                      ^
+app/models/user.rb:12:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_secure_password
+^^^^
+app/models/user.rb:13:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/user.rb:14:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :purchases
+^^^^
+app/models/user.rb:14:5: C: Rails/HasManyOrHasOneDependent: Specify a :dependent option.
+    has_many :purchases
+    ^^^^^^^^
+app/models/user.rb:15:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/user.rb:16:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :likes
+^^^^
+app/models/user.rb:16:5: C: Rails/HasManyOrHasOneDependent: Specify a :dependent option.
+    has_many :likes
+    ^^^^^^^^
+app/models/user.rb:17:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    has_many :list_of_likes,through: :likes, source: :product
+^^^^
+app/models/user.rb:17:28: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    has_many :list_of_likes,through: :likes, source: :product
+                           ^
+app/models/user.rb:18:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+app/models/user.rb:19:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def like(product)
+^^^^
+app/models/user.rb:20:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        self.likes.find_or_create_by(product_id: product.id)
+    ^^^^
+app/models/user.rb:20:9: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+        self.likes.find_or_create_by(product_id: product.id)
+        ^^^^
+app/models/user.rb:23:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def unlike(product)
+^^^^
+app/models/user.rb:24:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        like = self.likes.find_by(product_id: product.id)
+    ^^^^
+app/models/user.rb:24:16: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+        like = self.likes.find_by(product_id: product.id)
+               ^^^^
+app/models/user.rb:25:9: C: [Correctable] Style/SafeNavigation: Use safe navigation (&.) instead of checking if an object exists before calling the method.
+        like.destroy if like
+        ^^^^^^^^^^^^^^^^^^^^
+app/models/user.rb:28:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def liking?(product)
+^^^^
+app/models/user.rb:29:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        self.list_of_likes.include?(product)
+    ^^^^
+app/models/user.rb:29:9: C: [Correctable] Style/RedundantSelf: Redundant self detected.
+        self.list_of_likes.include?(product)
+        ^^^^
+app/models/user.rb:30:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end        
+       ^^^^^^^^
+app/models/user.rb:31:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+config.ru:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# This file is used by Rack-based servers to start the application.
+^
+
+20 files inspected, 141 offenses detected, 119 offenses auto-correctable

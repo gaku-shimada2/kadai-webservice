@@ -55,3 +55,6 @@ gem 'pry-byebug', group: :development
 group :production do
   gem 'pg', '>= 0.18', '< 2.0'
 end
+gem 'rubocop', require: false
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false

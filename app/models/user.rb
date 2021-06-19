@@ -4,11 +4,11 @@ class User < ApplicationRecord
     validates :email, presence: true, length: { maximum: 255 },
                   format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                   uniqueness: { case_sensitive: false }
-    validates :postalcode, presence: true, length: { in: 7..7 }
+    validates :postalcode, presence: true,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
     validates :prefecture, presence: true,  length: { maximum: 10 }
     validates :address1, presence: true,  length: { maximum: 100 }
     validates :address2, length: { maximum: 100 }
-    validates :tel,  presence: true, length: { in: 10..11 }
+    validates :tel,  presence: true, numericality: {only_integer: true}, length: { in: 10..11 }
     has_secure_password
     
     has_many :purchases

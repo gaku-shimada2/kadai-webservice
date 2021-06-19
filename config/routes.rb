@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'complete', to: 'purchases#complete'
   get 'confirm', to: 'purchases#confirm'
 
-
   resources :users, only: [:show, :create, :edit, :update] do
     member do
       get :purchases
