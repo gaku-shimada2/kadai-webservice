@@ -1,5 +1,5 @@
 <% if @purchases.any? %>
-  <ul class="list-unstyled">
+  <% i = 0 %>
     <% @purchases.each do |purchase| %>
       <div class="container">
         <div class="row">
@@ -7,10 +7,10 @@
             <h5>購入日：<%= purchase.created_at.in_time_zone('Tokyo').strftime("%Y年%m月%d日")  %></h5>
           </div>
           <div class="col-md-4">
-            <%= image_tag purchase.product.image, class: "img-fluid" %>
+            <%= image_tag purchase.product.image, class: "img-fluid",alt: "" %>
           </div>
           <div class="col-md-4">
-              <table class="table border="2"">
+              <table class="table">
                 <thead>
                     <tr><td colspan="2"><%= purchase.product.name %></td></tr>
                     <tr><td colspan="2"><%= purchase.product.description %></td></tr>
@@ -30,13 +30,13 @@
 
           </div>
           <div class="col-md-4">
-            <p><a href="<%= product_path(purchase.product) %>" class="btn btn-danger btn-block">購入する</a>
-            <%= render 'likes/like_button', product: purchase.product %></p>
+            <a href="<%= product_path(purchase.product) %>" class="btn btn-danger btn-block">購入する</a><br>
+            <%= render 'likes/like_button', product: purchase.product, i: i %>
           </div>
         </div>
       </div>
+    <% i += 1 %>
     <% end %>
-  </ul>
   <%= paginate @purchases %>
   <% else %>
   <div class="alert alert-warning" role="alert">購入履歴がありません。</div>

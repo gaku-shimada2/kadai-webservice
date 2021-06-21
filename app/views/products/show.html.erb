@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-5">
-            <%= image_tag @product.image, class: "img-fluid" %>
+            <%= image_tag @product.image, class: "img-fluid",alt: "" %>
         </div>
         <div class="col-md-7">
             <p><%= @product.name %><br>
@@ -13,11 +13,11 @@
             <div class="form-group">
                 <p class="text-right"><%= f.select  :quantity,  [["1", 1], ["2", 2], ["3", 3], ["4", 4]], include_blank: "個数を選択"  %>　個</p>
             </div>
-            <%= f.submit '購入手続き', class: 'btn btn-danger btn-block' %>
-            <% end %>
-            <% if logged_in? %>
-                <p><%= render 'likes/like_button', product: @product %></p>
-            <% end %>
+                <%= f.submit '購入手続き', class: 'btn btn-danger btn-block' %><br>
+                <% end %>
+                <% if logged_in? %>
+                    <%= render 'likes/like_button', product: @product %>
+                <% end %>
         </div>
     </div>
 </div>

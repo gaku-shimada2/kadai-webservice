@@ -4,8 +4,7 @@
       <% @products.each do |product| %>
         <div class="col-md-3">
           <div class="card mb-3 shadow-sm">
-            <%= link_to image_tag(product.image, class: "img-fluid"), product_path(product)  %>
-            <img class="card-img-top">
+            <%= link_to image_tag(product.image, class: "img-fluid", alt: ""), product_path(product)  %>
             <div class="card-body">
               <p class="card-text"><%= product.name %><br><%= product.price %>円</p>
             </div>

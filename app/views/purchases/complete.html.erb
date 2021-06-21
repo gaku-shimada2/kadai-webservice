@@ -4,14 +4,14 @@
             
             <h5>お届け先</h5>
             <div class="offset-sm-1">
-                <p><%= current_user.name %></br>
-                〒<%= current_user.postalcode %></br>
+                <p><%= current_user.name %><br>
+                〒<%= current_user.postalcode %><br>
                 <%= current_user.prefecture %><%= current_user.address1 %><%= current_user.address2 %></p>
             </div>
         </div>
         <div class="col-md-4">
             <h5>お支払方法</h5>
-            <p><%= session[:purchase_method] %></p>
+            <p><%= session[:payment_method] %></p>
         </div>
         <div class="col-md-4">
             <br><p class = "text-right"><strong>合計：<%= @product.price * session[:purchase_quantity] %>円</strong></p>
@@ -20,10 +20,10 @@
         <h5>ご注文商品</h5>
         </div>
         <div class="col-md-6">
-                <%= image_tag @product.image, class: "img-fluid" %>
+                <%= image_tag @product.image, class: "img-fluid",alt: "" %>
         </div>
         <div class="col-md-6">
-            <table class="table border="2"">
+            <table class="table">
                 <thead>
                     <tr><td colspan="2"><%= @product.name %></td></tr>
                     <tr><td colspan="2"><%= @product.description %></td></tr>

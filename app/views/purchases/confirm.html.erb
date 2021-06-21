@@ -5,8 +5,8 @@
             
             <h5>お届け先</h5>
             <div class="offset-sm-1">
-                <p>お名前：<%= current_user.name %></br>
-                住所　：〒<%= current_user.postalcode %></br>
+                <p>お名前：<%= current_user.name %><br>
+                住所　：〒<%= current_user.postalcode %><br>
                 <%= current_user.prefecture %><%= current_user.address1 %><%= current_user.address2 %></p>
             </div>
         </div>
@@ -27,10 +27,10 @@
         <h5>ご注文商品</h5>
         </div>
         <div class="col-md-6">
-                <%= image_tag @product.image, class: "img-fluid" %>
+                <%= image_tag @product.image, class: "img-fluid", alt: "" %>
         </div>
         <div class="col-md-6">
-            <table class="table border="2"">
+            <table class="table">
                 <thead>
                     <tr><td colspan="2"><%= @product.name %></td></tr>
                     <tr><td colspan="2"><%= @product.description %></td></tr>

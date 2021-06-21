@@ -1,31 +1,31 @@
 <% if @likes.any? %>
-  <ul class="list-unstyled">
-    <% @likes.each do |like| %>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <%= image_tag like.product.image, class: "img-fluid" %>
-          </div>
-          <div class="col-md-4">
-              <table class="table border="2"">
-                <thead>
-                    <tr><td colspan="2"><%= like.product.name %></td></tr>
-                    <tr><td colspan="2"><%= like.product.description %></td></tr>
-                    <tr><td>値段</td>
-                        <td><div class="text-right"><%= like.product.price %>円</div></td>
-                    </tr>
-                </thead>
-            </table>
+  <% i = 0 %>
+  <% @likes.each do |like| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag like.product.image, class: "img-fluid",alt: "" %>
+        </div>
+        <div class="col-md-4">
+            <table class="table">
+              <thead>
+                  <tr><td colspan="2"><%= like.product.name %></td></tr>
+                  <tr><td colspan="2"><%= like.product.description %></td></tr>
+                  <tr><td>値段</td>
+                      <td><div class="text-right"><%= like.product.price %>円</div></td>
+                  </tr>
+              </thead>
+          </table>
 
-          </div>
-          <div class="col-md-4">
-            <p><a href="<%= product_path(like.product) %>" class="btn btn-danger btn-block">購入する</a>
-            <%= render 'likes/like_button', product: like.product %></p>
-          </div>
+        </div>
+        <div class="col-md-4">
+          <a href="<%= product_path(like.product) %>" class="btn btn-danger btn-block">購入する</a><br>
+          <%= render 'likes/like_button', product: like.product, i: i %>
         </div>
       </div>
-    <% end %>
-  </ul>
+    </div>
+  <% i += 1 %>
+  <% end %>
   <%= paginate @likes %>
   <% else %>
     <div class="alert alert-warning" role="alert">お気に入りがありません。</div>
