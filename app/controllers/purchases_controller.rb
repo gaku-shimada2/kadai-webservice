@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
     if @purchase.quantity == nil then
       flash.now[:danger]  = '数量を入力してください。'
       render file: "app/views/products/show.html.erb"
-    elsif @purchase.quantity < 0 && quantity > 4 then
+    elsif @purchase.quantity < 0 || @purchase.quantity > 4 then
       flash.now[:danger]  = '数量を正しく入力してください。'
       render file: "app/views/products/show.html.erb"
     else
@@ -23,7 +23,7 @@ class PurchasesController < ApplicationController
       flash[:success] = '購入が完了しました。'
       redirect_to complete_path
     else
-      flash.now[:danger] = '購入が失敗しました。'
+      flash[:danger] = '購入が失敗しました。'
       redirect_to complete_path
     end
   end
